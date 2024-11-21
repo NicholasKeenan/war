@@ -53,3 +53,11 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
     return cardArray; // Returns pointer
 
 }
+
+void printCard ( CARD *cardArray, int arraySize ) { // Prints room
+
+    for ( int i = 0; i < arraySize; i++ ) {
+        printf ( "\n%s of %s", cardArray[i].card, cardArray.suit );
+    }
+
+}
