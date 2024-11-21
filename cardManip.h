@@ -7,5 +7,8 @@ typedef struct { //CARD struct declaration
     int value; //value of the card ( "two" = 2, etc )
 }CARD;
 
+CARD* readCardFile ( char* filename, int *cardArraySize );
+void printCard ( CARD *cardArray, int arraySize );
+
 
 #endif
