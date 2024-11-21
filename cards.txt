@@ -1,0 +1,207 @@
+Suit: Spades
+Card: Ace
+Value: 1
+
+Suit: Clubs
+Card: Ace
+Value: 1
+
+Suit: Hearts
+Card: Ace
+Value: 1
+
+Suit: Diamonds
+Card: Ace
+Value: 1
+
+Suit: Spades
+Card: Two
+Value: 2
+
+Suit: Clubs
+Card: Two
+Value: 2
+
+Suit: Hearts
+Card: Two
+Value: 2
+
+Suit: Diamonds
+Card: Two
+Value: 2
+
+Suit: Spades
+Card: Three
+Value: 3
+
+Suit: Clubs
+Card: Three
+Value: 3
+
+Suit: Hearts
+Card: Three
+Value: 3
+
+Suit: Diamonds
+Card: Three
+Value: 3
+
+Suit: Spades
+Card: Four
+Value: 4
+
+Suit: Clubs
+Card: Four
+Value: 4
+
+Suit: Hearts
+Card: Four
+Value: 4
+
+Suit: Diamonds
+Card: Four
+Value: 4
+
+Suit: Spades
+Card: Five
+Value: 5
+
+Suit: Clubs
+Card: Five
+Value: 5
+
+Suit: Hearts
+Card: Five
+Value: 5
+
+Suit: Diamonds
+Card: Five
+Value: 5
+
+Suit: Spades
+Card: Six
+Value: 6
+
+Suit: Clubs
+Card: Six
+Value: 6
+
+Suit: Hearts
+Card: Six
+Value: 6
+
+Suit: Diamonds
+Card: Six
+Value: 6
+
+Suit: Spades
+Card: Seven
+Value: 7
+
+Suit: Clubs
+Card: Seven
+Value: 7
+
+Suit: Hearts
+Card: Seven
+Value: 7
+
+Suit: Diamonds
+Card: Seven
+Value: 7
+
+Suit: Spades
+Card: Eight
+Value: 8
+
+Suit: Clubs
+Card: Eight
+Value: 8 
+
+Suit: Hearts
+Card: Eight
+Value: 8 
+
+Suit: Diamonds
+Card: Eight
+Value: 8 
+
+Suit: Spades
+Card: Nine
+Value: 9
+
+Suit: Clubs
+Card: Nine
+Value: 9
+
+Suit: Hearts
+Card: Nine
+Value: 9
+
+Suit: Diamonds
+Card: Nine
+Value: 9
+
+Suit: Spades
+Card: Ten
+Value: 10
+
+Suit: Clubs
+Card: Ten
+Value: 10
+
+Suit: Hearts
+Card: Ten
+Value: 10
+
+Suit: Diamonds
+Card: Ten
+Value: 10
+
+Suit: Spades
+Card: Jack
+Value: 11
+
+Suit: Clubs
+Card: Jack
+Value: 11
+
+Suit: Hearts
+Card: Jack
+Value: 11
+
+Suit: Diamonds
+Card: Jack
+Value: 11
+
+Suit: Spades
+Card: Queen
+Value: 12
+
+Suit: Clubs
+Card: Queen
+Value: 12
+
+Suit: Hearts
+Card: Queen
+Value: 12
+
+Suit: Diamonds
+Card: Queen
+Value: 12
+
+Suit: Spades
+Card: King
+Value: 13
+
+Suit: Clubs
+Card: King
+Value: 13
+
+Suit: Hearts
+Card: King
+Value: 13
+
+Suit: Diamonds
+Card: King
+Value: 13
