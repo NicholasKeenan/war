@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "cardManip.h"
+#include "stringManip.h"
 
 CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read room file
 
@@ -57,7 +58,7 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
 void printCard ( CARD *cardArray, int arraySize ) { // Prints room
 
     for ( int i = 0; i < arraySize; i++ ) {
-        printf ( "\n%s of %s", cardArray[i].card, cardArray.suit );
+        printf ( "\n%s of %s", cardArray[i].card, cardArray[i].suit );
     }
 
 }
