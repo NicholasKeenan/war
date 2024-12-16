@@ -7,6 +7,10 @@ typedef struct { //CARD struct declaration
     int value[16]; //value of the card ( "two" = 2, etc )
 }CARD;
 
+typedef struct {
+    CARD hand[26];
+} PLAYER;
+
 CARD* readCardFile ( char* filename, int *cardArraySize );
 void printCard ( CARD *cardArray, int arraySize );
 
