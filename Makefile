@@ -1,9 +1,9 @@
 #Makefile for card game
 
-game: main.o stringManip.o cardManip.o deckManip.o gameplay.o
-	gcc main.o stringManip.o cardManip.o deckManip.o gameplay.o -Wall -o game
+game: main.o stringManip.o cardManip.o deckManip.o
+	gcc main.o stringManip.o cardManip.o deckManip.o -Wall -o game
 
-main.o: stringManip.o cardManip.o main.c deckManip.c gameplay.o
+main.o: stringManip.o cardManip.o main.c deckManip.c
 	gcc main.c -c -Wall -o main.o
 
 stringManip.o: stringManip.c stringManip.h
@@ -14,9 +14,6 @@ cardManip.o: cardManip.c cardManip.h stringManip.h
 
 deckManip.o: deckManip.c cardManip.h stringManip.h deckManip.h
 	gcc deckManip.c -c -Wall -o deckManip.o
-
-gameplay.o: gameplay.c gameplay.h stringManip.o cardManip.o deckManip.o
-	gcc gameplay.c -c -Wall -o gameplay.o
 
 clean:
 	rm *.o

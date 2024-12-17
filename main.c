@@ -5,16 +5,22 @@
 #include "cardManip.h"
 #include "stringManip.h"
 #include "deckManip.h"
-#include "gameplay.h"
 
 int main ( int argc, char *argv[] ) {
 
     char choice; //stores user input for instructions vs starting
-    int playAgain = 1; //stores input for whether player wants to go again
+    int cardArraySize = 52; // Card array variable
+    int roundCounter = 0; //round counter variable
+
+    PLAYER player1, player2; //creates players
+
+    CARD *cardArray = readCardFile ( argv[1], &cardArraySize ); //brings file into main
+    if ( cardArray == NULL ) return 0; //deals with errors reading file
+
 
     //STARTUP PROCEDURE
 
-    while (playAgain) {
+        resetText_Color();
 
         while ( choice != '\n' && choice != '1' ) {
 
@@ -27,18 +33,17 @@ int main ( int argc, char *argv[] ) {
                 
                 printf ( "\nGreat! Let's begin.\nTo Start Each Round As Well As This One, Just Press 'ENTER' On Your Keyboard!\n\n" );
 
-                choice = '\0'; //resets choice
+                // choice = '\0'; //resets choice
 
                 while ( choice != '\n' ) { //gets new choice
 
                     printf ( "Please Press 'ENTER' To Begin:\n" );
                     choice = getchar();
-
                 }
 
                 resetText_Color(); //sets text color back to white
 
-                break; //exits while loop
+                //break; //exits while loop
 
             } else if ( choice == '1' ) { //prints instructions, rules of the game, and controls if user enters 1
 
@@ -52,7 +57,6 @@ int main ( int argc, char *argv[] ) {
 
                     printf ( "Please Press 'ENTER' To Begin:\n" );
                     choice = getchar();
-
                 }
 
                 resetText_Color(); //sets text color back to white
@@ -72,42 +76,29 @@ int main ( int argc, char *argv[] ) {
             resetText_Color();
         }
 
-        char playAgainInput;//variable to play again
+        shuffleDeck ( cardArray ); //shuffles deck
+        dealCards ( cardArray, &player1, &player2 ); //deals each player their cards
 
-        playGame ( argv[1] ); //plays game
+        while ( player1.handSize > 0 && player2.handSize > 0 ) { //plays rounds until one player has 0 cards left
 
-        //Loops game
+            greenText(); //sets text to green
+            printf ( "-----------------------------------------------------\n" ); //separates rounds
+            resetText_Color(); //resets color to white
+            
+            playRound ( &player1, &player2, &roundCounter );//plays round
 
-        while (1) {
-            printf ( "\nWould You Like to Play Again? (y/n):\n" ); //asks if player wants to go again
-            playAgainInput = getchar();
-
-            switch ( playAgainInput ) {
-
-                case 'Y':
-                case 'y':
-                    playAgain = 1; //continues loop
-                    break;
-
-                case 'N':
-                case 'n':
-                    printf ( "Okay! Thanks for Playing!\n" );
-                    playAgain = 0; //exits game loop
-                    break;
-
-                default: 
-                    printf ( "Invalid Input! Please Type 'y' or 'n'\n" );
-                    continue;
-            }
-
-            if ( playAgain == 0 || playAgain == 1 ) { //exits loop if valid input
-                break;
-            }
-
+            while ( getchar() != '\n' ) {//waits for new input
+            }//loop will keep running until user presses enter
+            
         }
 
-    }
+        if ( player1.handSize > 0 ) { //determines game winner
+            printf ( "You Win This Game!\n" );
+        } else if ( player2.handSize > 0 ) {
+            printf ( "You Lose... Computer Win This Game!\n" );
+        } else {
+            printf ( "error" );
+        }
 
     return 0;
-
-}
+}  
