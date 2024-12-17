@@ -116,6 +116,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
     //shuffles hands every 20 rounds to prevent deadlock
     if ( *roundCounter % 20 == 0 ) {
+        printf("\nShuffling hands...\n");
         shuffleHand ( player1->hand, player1->handSize );
         shuffleHand ( player2->hand, player2->handSize );
     }
