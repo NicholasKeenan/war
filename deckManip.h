@@ -3,6 +3,6 @@
 
 void shuffleDeck ( CARD deck[] );
 void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 );
-void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ):
+void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter );
 
 #endif

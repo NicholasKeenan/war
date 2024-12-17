@@ -28,17 +28,28 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     CARD card1 = player1->hand[*roundCounter];
     CARD card2 = player2->hand[*roundCounter];
 
-    printf ( "Player 1 plays: %s of %s\n", card1.card, card1.suit );
-    printf ( "Player 1 plays: %s of %s\n", card1.card, card1.suit );
+    //displays what each player plays
+    printf ( "You play: %s of %s\n", card1.card, card1.suit );
+    printf ( "Computer plays: %s of %s\n", card1.card, card1.suit );
 
-    int result = compareCards ( &card1, &card2 );
+    int result = compareCards ( &card1, &card2 ); //compares cards played
 
     if ( result > 0 ) {
-        printf ( "You Won the Round!\n" );
+
+        printf ( "You Won the Round!\n" ); //declares winner
+
+        player1->hand[ 26 + *roundCounter ] = card1; //player 1 gets their card back
+        player1->hand[ 26 + *roundCounter + 1 ] = card2; //player 1 gets the other players card back
+
     } else if ( result < 0 ) {
-        printf ( "Computer Wins the Round!\n" );
+
+        printf ( "Computer Wins the Round!\n" );//declares winner
+
+        player2->hand[ 26 + *roundCounter ] = card2; //player 1 gets their card back
+        player2->hand[ 26 + *roundCounter + 1 ] = card1; //player 1 gets the other players card back
+
     } else {
-        printf ( "It's a Tie!\n" )
+        printf ( "It's a Tie!\n" );//declares winner
     }
 
     ( *roundCounter )++;
