@@ -25,6 +25,9 @@ void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 ) {
 
 void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     
+    int player1Wins = 0;
+    int player2Wins = 0;
+
     CARD card1 = player1->hand[*roundCounter];
     CARD card2 = player2->hand[*roundCounter];
 
@@ -37,6 +40,8 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     if ( result > 0 ) {
 
         printf ( "You Won the Round!\n" ); //declares winner
+
+        player1Wins++; //adds to the win counter of player 1
 
         player1->hand[ 26 + *roundCounter ] = card1; //player 1 gets their card back
         player1->hand[ 26 + *roundCounter + 1 ] = card2; //player 1 gets the other players card
@@ -53,6 +58,8 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     } else if ( result < 0 ) {
 
         printf ( "Computer Wins the Round!\n" );//declares winner
+
+        player2Wins++; //adds to the win counter of player 2
 
         player2->hand[ 26 + *roundCounter ] = card2; //player 1 gets their card back
         player2->hand[ 26 + *roundCounter + 1 ] = card1; //player 1 gets the other players card back
