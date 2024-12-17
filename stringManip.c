@@ -43,6 +43,10 @@ void greenText() {
     printf ( "\033[0;32m" );
 }
 
+void redText() {
+    printf ( "\033[1;31m" );
+}
+
 void resetText_Color() {
     printf ( "\033[0m" );
 }
