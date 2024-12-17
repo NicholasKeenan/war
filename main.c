@@ -19,7 +19,7 @@ int main ( int argc, char *argv[] ) {
 
 
     //STARTUP PROCEDURE
-
+    do {
         resetText_Color();
 
         while ( choice != '\n' && choice != '1' ) {
@@ -33,8 +33,6 @@ int main ( int argc, char *argv[] ) {
                 
                 printf ( "\nGreat! Let's begin.\nTo Start Each Round As Well As This One, Just Press 'ENTER' On Your Keyboard!\n\n" );
 
-                // choice = '\0'; //resets choice
-
                 while ( choice != '\n' ) { //gets new choice
 
                     printf ( "Please Press 'ENTER' To Begin:\n" );
@@ -42,8 +40,6 @@ int main ( int argc, char *argv[] ) {
                 }
 
                 resetText_Color(); //sets text color back to white
-
-                //break; //exits while loop
 
             } else if ( choice == '1' ) { //prints instructions, rules of the game, and controls if user enters 1
 
@@ -100,5 +96,12 @@ int main ( int argc, char *argv[] ) {
             printf ( "error" );
         }
 
+        printf ( "\nWould You Like to Play Again? (y/n):\n" ); //prompt to play again
+        choice = getchar(); //stores input
+        while ( getchar() != '\n' ) {} //clears input
+
+    } while ( choice == 'y' || choice == 'Y' );
+
     return 0;
+
 }  
