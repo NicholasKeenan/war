@@ -18,6 +18,17 @@ void shuffleDeck ( CARD deck[] ) {
     }
 }
 
+//function to shuffle hand
+void shuffleHand ( CARD *hand, int handSize ) {
+    srand ( time ( NULL ) );
+    for (int i = handSize - 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        CARD temp = hand[i];
+        hand[i] = hand[j];
+        hand[j] = temp;
+    }
+}
+
 void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 ) {
     for ( int i = 0; i < 26; i++ ) {
         player1->hand[i] = deck[i]; //deals first player 26 cards
@@ -101,6 +112,12 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
             player2->hand[i] = player2->hand[i + 1];  // Shift player 2's cards
         }
         player2->hand[player2->handSize - 1] = tempCard2;  // Place the top card at the end of the hand
+    }
+
+    //shuffles hands every 20 rounds to prevent deadlock
+    if ( *roundCounter % 20 == 0 ) {
+        shuffleHand ( player1->hand, player1->handSize );
+        shuffleHand ( player2->hand, player2->handSize );
     }
 
 
