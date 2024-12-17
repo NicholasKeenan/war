@@ -22,3 +22,25 @@ void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 ) {
         player2->hand[i] = deck[i+26]; //deals second player the rest of cards
     }
 }
+
+void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
+    
+    CARD card1 = player1->hand[*roundCounter];
+    CARD card2 = player2->hand[*roundCounter];
+
+    printf ( "Player 1 plays: %s of %s\n", card1.card, card1.suit );
+    printf ( "Player 1 plays: %s of %s\n", card1.card, card1.suit );
+
+    int result = compareCards ( &card1, &card2 );
+
+    if ( result > 0 ) {
+        printf ( "You Won the Round!\n" );
+    } else if ( result < 0 ) {
+        printf ( "Computer Wins the Round!\n" );
+    } else {
+        printf ( "It's a Tie!\n" )
+    }
+
+    ( *roundCounter )++;
+
+}
