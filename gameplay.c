@@ -28,8 +28,11 @@ void playGame ( char *filename ) {
 
     if ( player1.handSize > 0 ) { //determines game winner
         printf ( "You Win This Game!\n" );
-    } else {
+    } else if ( player2.handSize > 0 ) {
         printf ( "You Lose... Computer Win This Game!\n" );
+    } else {
+        printf ( "error" );
+        break;
     }
 
 }
