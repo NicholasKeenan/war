@@ -5,6 +5,7 @@
 #include "cardManip.h"
 #include "stringManip.h"
 #include "deckManip.h"
+#include "gameplay.h"
 
 int main ( int argc, char *argv[] ) {
 
@@ -71,6 +72,8 @@ int main ( int argc, char *argv[] ) {
         break; //ends loop
     }
 
-    free ( cardArray );
+    playGame ( argv[1] );
+
+    return 0;
 
 }
