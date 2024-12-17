@@ -25,6 +25,12 @@ int main ( int argc, char *argv[] ) {
 
     }
 
+    if ( player1.handSize > 0 ) { //determines game winner
+        printf ( "You Win This Game!\n" );
+    } else {
+        printf ( "You Lose... Computer Win This Game!\n" );
+    }
+
     // printf ( "Player 1's Hand:\n" );
     // printCard ( player1.hand, 26 );
 
