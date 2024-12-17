@@ -10,7 +10,7 @@ void playGame ( char *filename ) {
 
     int cardArraySize = 52; // Card array variable
     int roundCounter = 0; //round counter variable
-    char userInput = NULL; //stores user input for getting instructions or starting round
+    char userInput; //stores user input for getting instructions or starting round
 
     PLAYER player1, player2; //creates players
 
@@ -21,8 +21,12 @@ void playGame ( char *filename ) {
     dealCards ( cardArray, &player1, &player2 ); //deals each player their cards
 
     while ( player1.handSize > 0 && player2.handSize > 0 ) { //plays rounds until one player has 0 cards left
+        
+        playRound ( &player1, &player2, &roundCounter );//plays round
 
-        playRound ( &player1, &player2, &roundCounter );
+        while ( getchar() != '\n' ) {//waits for new input
+        }//loop will keep running until user presses enter
+        
 
     }
 
