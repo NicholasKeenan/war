@@ -9,6 +9,7 @@ typedef struct { //CARD struct declaration
 
 typedef struct {
     CARD hand[26];
+    int handSize;
 } PLAYER;
 
 CARD* readCardFile ( char* filename, int *cardArraySize );
