@@ -35,6 +35,8 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     CARD card1 = player1->hand[0];
     CARD card2 = player2->hand[0];
 
+    printf("\nRound: %d\n", *roundCounter);
+
     //displays what each player plays
     printf ( "\nYou play: %s of %s\n", card1.card, card1.suit );
     printf ( "Computer plays: %s of %s\n", card2.card, card2.suit );
@@ -84,7 +86,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
         player2->handSize--;
 
     } else {
-        printf ( "It's a Tie!\n" );//declares winner
+        printf ( "\nIt's a Tie!\n" );//declares winner
 
         // Move the top card of player 1 to the back of their hand
         CARD tempCard1 = card1;  // Store top card temporarily
