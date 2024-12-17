@@ -38,3 +38,11 @@ char *str_cut ( char* s, int start, int end ) { // Cut function
     return buffer;
 
 }
+
+void greenText() {
+    printf ( "\033[0;32m" );
+}
+
+void resetText_Color() {
+    printf ( "\033[0m" );
+}

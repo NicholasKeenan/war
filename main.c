@@ -31,12 +31,6 @@ int main ( int argc, char *argv[] ) {
         printf ( "You Lose... Computer Win This Game!\n" );
     }
 
-    // printf ( "Player 1's Hand:\n" );
-    // printCard ( player1.hand, 26 );
-
-    // printf ( "Player 2's Hand:\n" );
-    // printCard ( player2.hand, 26 );
-
     free ( cardArray );
 
 }

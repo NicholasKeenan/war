@@ -3,5 +3,7 @@
 
 char* str_trim ( char* s );
 char *str_cut ( char * s, int start, int end );
+void greenText();
+void resetText_Color()
 
 #endif
