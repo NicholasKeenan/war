@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "cardManip.h"
 #include "stringManip.h"
@@ -8,6 +9,7 @@
 
 //fucntion to shuffle deck
 void shuffleDeck ( CARD deck[] ) {
+    srand ( time ( NULL ) );
     for ( int i = 0; i < 52; i++ ) {
         int j = rand() % 52;
         CARD temp = deck[i];
