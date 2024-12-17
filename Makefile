@@ -15,6 +15,9 @@ cardManip.o: cardManip.c cardManip.h stringManip.h
 deckManip.o: deckManip.c cardManip.h stringManip.h deckManip.h
 	gcc deckManip.c -c -Wall -o deckManip.o
 
+gameplay.o: gameplay.c gameplay.h stringManip.o cardManip.o deckManip.o
+	gcc gameplay.c -c -Wall -o gameplay.o
+
 clean:
 	rm *.o
 	rm game
