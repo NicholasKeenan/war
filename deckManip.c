@@ -33,7 +33,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
     //displays what each player plays
     printf ( "\nYou play: %s of %s\n", card1.card, card1.suit );
-    printf ( "Computer plays: %s of %s\n", card1.card, card1.suit );
+    printf ( "Computer plays: %s of %s\n", card2.card, card2.suit );
 
     int result = compareCards ( &card1, &card2 ); //compares cards played
 
@@ -43,15 +43,22 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player1Wins++; //adds to the win counter of player 1
 
-        player1->hand[ 26 + *roundCounter ] = card1; //player 1 gets their card back
-        player1->hand[ 26 + *roundCounter + 1 ] = card2; //player 1 gets the other players card
+        player1->hand[ player1->handSize ] = card1; //player 1 gets their card back
+        player1->hand[ player1->handSize + 1 ] = card2; //player 1 gets the other players card
+        player1->handSize += 2;
+
 
         //removes winning card and other players card so they are at the back of the deck
         //makes next card in deck the new top card
-        for ( int i = *roundCounter; i < 25; i++ ) {
+        for ( int i = *roundCounter; i < player1->handSize - 2; i++ ) {
 
-            player1->hand[i] = player1->hand[ i + 1 ];
-            player2->hand[i] = player2->hand[ i + 1 ];
+            player1->hand[i] = player1->hand[ i + 2 ]; //shift player 1's cards
+
+        }
+
+        for ( int i = *roundCounter; i < player2->handSize - 1; i++ ) {
+
+            player2->hand[i] = player2->hand[ i + 1 ]; //shift player 2's cards
 
         }
 
@@ -61,15 +68,21 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player2Wins++; //adds to the win counter of player 2
 
-        player2->hand[ 26 + *roundCounter ] = card2; //player 1 gets their card back
-        player2->hand[ 26 + *roundCounter + 1 ] = card1; //player 1 gets the other players card back
+        player2->hand[ player2->handSize ] = card2; //player 2 gets their card back
+        player2->hand[ player2->handSize + 1 ] = card1; //player 2 gets the other players card
+        player2->handSize += 2;
 
         //removes winning card and other players card so they are at the back of the deck
         //makes next card in deck the new top card
-        for ( int i = *roundCounter; i < 25; i++ ) {
+        for ( int i = *roundCounter; i < player1->handSize - 1; i++ ) {
 
-            player1->hand[i] = player1->hand[ i + 1 ];
-            player2->hand[i] = player2->hand[ i + 1 ];
+            player1->hand[i] = player1->hand[ i + 1 ]; //shift player 1's cards
+
+        }
+
+        for ( int i = *roundCounter; i < player2->handSize - 1; i++ ) {
+
+            player2->hand[i] = player2->hand[ i + 2 ]; //shift player 2's cards
 
         }
 
