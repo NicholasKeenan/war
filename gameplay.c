@@ -14,7 +14,7 @@ void playGame ( char *filename ) {
 
     PLAYER player1, player2; //creates players
 
-    CARD *cardArray = readCardFile ( argv[1], &cardArraySize ); //brings file into main
+    CARD *cardArray = readCardFile ( filename, &cardArraySize ); //brings file into main
     if ( cardArray == NULL ) return 0; //deals with errors reading file
 
     shuffleDeck ( cardArray ); //shuffles deck
@@ -32,7 +32,6 @@ void playGame ( char *filename ) {
         printf ( "You Lose... Computer Win This Game!\n" );
     } else {
         printf ( "error" );
-        break;
     }
 
 }
