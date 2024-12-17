@@ -4,6 +4,7 @@
 
 #include "cardManip.h"
 #include "stringManip.h"
+#include "deckManip.h"
 
 int main ( int argc, char *argv[] ) {
     
