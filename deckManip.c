@@ -50,7 +50,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player1->hand[ player1->handSize ] = card1; //player 1 gets their card back
         player1->hand[ player1->handSize + 1 ] = card2; //player 1 gets the other players card
-        player1->handSize += 2; //increase player 1's hand size
+        player1->handSize += 1; //increase player 1's hand size
 
         for (int i = roundIndex; i < player1->handSize - 2; i++) {
             player1->hand[i] = player1->hand[i + 2];  // Shift player 1's cards
@@ -69,7 +69,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player2->hand[ player2->handSize ] = card2; //player 2 gets their card back
         player2->hand[ player2->handSize + 1 ] = card1; //player 2 gets the other players card
-        player2->handSize += 2;
+        player2->handSize += 1;
 
         for (int i = roundIndex; i < player1->handSize - 1; i++) {
             player1->hand[i] = player1->hand[i + 1];  // Shift player 1's cards
