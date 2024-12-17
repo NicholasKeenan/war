@@ -32,14 +32,14 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     CARD card2 = player2->hand[*roundCounter];
 
     //displays what each player plays
-    printf ( "You play: %s of %s\n", card1.card, card1.suit );
+    printf ( "\nYou play: %s of %s\n", card1.card, card1.suit );
     printf ( "Computer plays: %s of %s\n", card1.card, card1.suit );
 
     int result = compareCards ( &card1, &card2 ); //compares cards played
 
     if ( result > 0 ) {
 
-        printf ( "You Won the Round!\n" ); //declares winner
+        printf ( "\nYou Won the Round!\n" ); //declares winner
 
         player1Wins++; //adds to the win counter of player 1
 
@@ -57,7 +57,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
     } else if ( result < 0 ) {
 
-        printf ( "Computer Wins the Round!\n" );//declares winner
+        printf ( "\nComputer Wins the Round!\n" );//declares winner
 
         player2Wins++; //adds to the win counter of player 2
 
@@ -76,6 +76,9 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     } else {
         printf ( "It's a Tie!\n" );//declares winner
     }
+
+    printf ( "\nYou Have %d Cards Left.\n", player1->handSize );
+    printf ( "\nThe Computer Has %d Cards Left.\n", player2->handSize );
 
     ( *roundCounter )++;
 
