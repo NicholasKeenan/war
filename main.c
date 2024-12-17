@@ -20,6 +20,12 @@ int main ( int argc, char *argv[] ) {
 
     dealCards ( cardArray, &player1, &player2 ); //deals each player their cards
 
-    printCard ( cardArray, cardArraySize );
+    printf ( "Player 1's Hand:\n" );
+    printCard ( player1.hand, 26 );
+
+    printf ( "Player 2's Hand:\n" );
+    printCard ( player2.hand, 26 );
+
+    free ( cardArray );
 
 }
