@@ -100,7 +100,7 @@ int main ( int argc, char *argv[] ) {
                     continue;
             }
 
-            if ( playAgain == '0' || playAgain == '1' ) { //exits loop if valid input
+            if ( playAgain == 0 || playAgain == 1 ) { //exits loop if valid input
                 break;
             }
 
