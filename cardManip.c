@@ -59,7 +59,7 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
 void printCard ( CARD *cardArray, int arraySize ) { // Prints cards
 
     for ( int i = 0; i < arraySize; i++ ) {
-        printf ( "\n%s of %s", cardArray[i].card, cardArray[i].suit );
+        printf ( "%s of %s\n", cardArray[i].card, cardArray[i].suit );
     }
 
 }
