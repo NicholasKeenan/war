@@ -44,6 +44,7 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
             while ( fgets ( line, sizeof ( line ), file ) && strcmp ( str_trim ( line ), "" ) != 0 ) { // Checks if file is done 
                 strcat ( cardArray[cardIndex].value, " " ); //copies spaces/new lines
                 strcat ( cardArray[cardIndex].value, str_trim ( line ) );
+                printf("Current value: %s\n", cardArray[cardIndex].value);
             }
 
         }

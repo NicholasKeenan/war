@@ -28,8 +28,10 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     int player1Wins = 0;
     int player2Wins = 0;
 
-    CARD card1 = player1->hand[*roundCounter];
-    CARD card2 = player2->hand[*roundCounter];
+    int roundIndex = *roundCounter; // This will point to the index of the card being played this round
+
+    CARD card1 = player1->hand[roundIndex];
+    CARD card2 = player2->hand[roundIndex];
 
     //displays what each player plays
     printf ( "\nYou play: %s of %s\n", card1.card, card1.suit );
@@ -45,22 +47,16 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player1->hand[ player1->handSize ] = card1; //player 1 gets their card back
         player1->hand[ player1->handSize + 1 ] = card2; //player 1 gets the other players card
-        player1->handSize += 2;
+        player1->handSize += 2; //increase player 1's hand size
 
-
-        //removes winning card and other players card so they are at the back of the deck
-        //makes next card in deck the new top card
-        for ( int i = *roundCounter; i < player1->handSize - 2; i++ ) {
-
-            player1->hand[i] = player1->hand[ i + 2 ]; //shift player 1's cards
-
+        for (int i = roundIndex; i < player1->handSize - 2; i++) {
+            player1->hand[i] = player1->hand[i + 2];  // Shift player 1's cards
+        }
+        for (int i = roundIndex; i < player2->handSize - 1; i++) {
+            player2->hand[i] = player2->hand[i + 1];  // Shift player 2's cards
         }
 
-        for ( int i = *roundCounter; i < player2->handSize - 1; i++ ) {
-
-            player2->hand[i] = player2->hand[ i + 1 ]; //shift player 2's cards
-
-        }
+        player2->handSize--; //player 2 loses a card
 
     } else if ( result < 0 ) {
 
@@ -72,19 +68,14 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
         player2->hand[ player2->handSize + 1 ] = card1; //player 2 gets the other players card
         player2->handSize += 2;
 
-        //removes winning card and other players card so they are at the back of the deck
-        //makes next card in deck the new top card
-        for ( int i = *roundCounter; i < player1->handSize - 1; i++ ) {
-
-            player1->hand[i] = player1->hand[ i + 1 ]; //shift player 1's cards
-
+        for (int i = roundIndex; i < player1->handSize - 1; i++) {
+            player1->hand[i] = player1->hand[i + 1];  // Shift player 1's cards
+        }
+        for (int i = roundIndex; i < player2->handSize - 2; i++) {
+            player2->hand[i] = player2->hand[i + 2];  // Shift player 2's cards
         }
 
-        for ( int i = *roundCounter; i < player2->handSize - 1; i++ ) {
-
-            player2->hand[i] = player2->hand[ i + 2 ]; //shift player 2's cards
-
-        }
+        player1->handSize--; //player 1 loses a card
 
     } else {
         printf ( "It's a Tie!\n" );//declares winner
