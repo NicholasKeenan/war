@@ -21,6 +21,8 @@ void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 ) {
         player1->hand[i] = deck[i]; //deals first player 26 cards
         player2->hand[i] = deck[i+26]; //deals second player the rest of cards
     }
+    player1->handSize = 26; //creates hand size for player
+    player2->handSize = 26; //creates hand size for player
 }
 
 void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
@@ -29,6 +31,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     int player2Wins = 0;
 
     int roundIndex = *roundCounter; // This will point to the index of the card being played this round
+
 
     CARD card1 = player1->hand[roundIndex];
     CARD card2 = player2->hand[roundIndex];
@@ -80,6 +83,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     } else {
         printf ( "It's a Tie!\n" );//declares winner
     }
+
 
     printf ( "\nYou Have %d Cards Left.\n", player1->handSize );
     printf ( "\nThe Computer Has %d Cards Left.\n", player2->handSize );

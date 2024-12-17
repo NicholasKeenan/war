@@ -8,7 +8,7 @@ typedef struct { //CARD struct declaration
 }CARD;
 
 typedef struct {
-    CARD hand[53];
+    CARD hand[100];
     int handSize;
 } PLAYER;
 

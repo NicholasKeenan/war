@@ -17,15 +17,19 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
     int cArraySize = 52; // size of array
 
     CARD *cardArray = malloc ( sizeof ( CARD ) * cArraySize ); // Allocates memory for the array of cards
+    if (cardArray == NULL) { //checks memory allocated successfully
+        perror("Memory allocation failed for card array");
+        return NULL;
+    }
 
     char line[2048]; // Character buffer to store each line
-    int cardIndex = -1; // Start of the list of cards 
+    int cardIndex = 0; // Start of the list of cards 
 
     while ( fgets ( line, sizeof ( line ), file ) != NULL ) { //copies data
 
         if ( strncmp ( line, "Suit:", 5 ) == 0 ) { // Checks if line says the suit of the card
 
-            cardIndex++; // Accesses next index in deck
+            //cardIndex++; // Accesses next index in deck
 
             strcpy ( cardArray[cardIndex].suit, str_trim ( line + 5 ) ); //copies suit data to structure
 
@@ -38,15 +42,8 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
         }
 
         else if ( strncmp ( line, "Value:", 6 ) == 0 ) { // Checks if line says the card
-
-            strcpy ( cardArray[cardIndex].value, str_trim ( line + 6 ) ); //copies card value data to structure
-
-            while ( fgets ( line, sizeof ( line ), file ) && strcmp ( str_trim ( line ), "" ) != 0 ) { // Checks if file is done 
-                strcat ( cardArray[cardIndex].value, " " ); //copies spaces/new lines
-                strcat ( cardArray[cardIndex].value, str_trim ( line ) );
-                printf("Current value: %s\n", cardArray[cardIndex].value);
-            }
-
+            cardArray[cardIndex].value = atoi(str_trim(line + 6)); // Assign integer value
+            cardIndex++; // Accesses next index in deck
         }
 
     }
@@ -60,7 +57,7 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
 void printCard ( CARD *cardArray, int arraySize ) { // Prints cards
 
     for ( int i = 0; i < arraySize; i++ ) {
-        printf ( "%s of %s\n", cardArray[i].card, cardArray[i].suit );
+        printf ( "%s of %s\n\n VALUE: %d\n", cardArray[i].card, cardArray[i].suit, cardArray[i].value );
     }
 
 }
