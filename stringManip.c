@@ -23,13 +23,6 @@ char* str_trim ( char* s ) { // Trim function
 
 char *str_cut ( char* s, int start, int end ) { // Cut function
 
-    // char *e = s + end - 1; //pointer to end of string
-    // *e = 0;
-
-    // s += start;
-
-    // return s;
-
     s += start;
 
     char buffer[2048];

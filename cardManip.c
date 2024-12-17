@@ -29,8 +29,6 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
 
         if ( strncmp ( line, "Suit:", 5 ) == 0 ) { // Checks if line says the suit of the card
 
-            //cardIndex++; // Accesses next index in deck
-
             strcpy ( cardArray[cardIndex].suit, str_trim ( line + 5 ) ); //copies suit data to structure
 
         }
