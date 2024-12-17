@@ -13,7 +13,7 @@ cardManip.o: cardManip.c cardManip.h stringManip.h
 	gcc cardManip.c -c -Wall -o cardManip.o
 
 deckManip.o: deckManip.c cardManip.h stringManip.h deckManip.h
-	gcc cardManip.c -c -Wall -o cardManip.o
+	gcc deckManip.c -c -Wall -o deckManip.o
 
 clean:
 	rm *.o
