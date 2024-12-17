@@ -21,7 +21,7 @@ int main ( int argc, char *argv[] ) {
             greenText(); //makes text green
 
             //Displays instructions to player on how to start or see rules of the game
-            printf ( "\nHello, Welcome!\n\nTo recieve instructions and begin the game... Just Press Enter on Your Keyboard\n\nTo Get the Rules of The Game... Just Press 1 On Your Keyboard" );
+            printf ( "\nHello, Welcome!\n\nTo recieve instructions and begin the game... Just Press Enter on Your Keyboard\n\nTo Get the Rules of The Game... Just Press 1 On Your Keyboard\n" );
             choice = getchar(); //collects user input
             if ( choice == '\n' ) {//starts game if player presses enter
                 
