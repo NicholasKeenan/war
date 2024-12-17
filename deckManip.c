@@ -39,7 +39,16 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
         printf ( "You Won the Round!\n" ); //declares winner
 
         player1->hand[ 26 + *roundCounter ] = card1; //player 1 gets their card back
-        player1->hand[ 26 + *roundCounter + 1 ] = card2; //player 1 gets the other players card back
+        player1->hand[ 26 + *roundCounter + 1 ] = card2; //player 1 gets the other players card
+
+        //removes winning card and other players card so they are at the back of the deck
+        //makes next card in deck the new top card
+        for ( int i = *roundCounter; i < 25; i++ ) {
+
+            player1->hand[i] = player1->hand[ i + 1 ];
+            player2->hand[i] = player2->hand[ i + 1 ];
+
+        }
 
     } else if ( result < 0 ) {
 
@@ -47,6 +56,15 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player2->hand[ 26 + *roundCounter ] = card2; //player 1 gets their card back
         player2->hand[ 26 + *roundCounter + 1 ] = card1; //player 1 gets the other players card back
+
+        //removes winning card and other players card so they are at the back of the deck
+        //makes next card in deck the new top card
+        for ( int i = *roundCounter; i < 25; i++ ) {
+
+            player1->hand[i] = player1->hand[ i + 1 ];
+            player2->hand[i] = player2->hand[ i + 1 ];
+
+        }
 
     } else {
         printf ( "It's a Tie!\n" );//declares winner
