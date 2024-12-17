@@ -32,11 +32,8 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     int player1Wins = 0;
     int player2Wins = 0;
 
-    int roundIndex = *roundCounter; // This will point to the index of the card being played this round
-
-
-    CARD card1 = player1->hand[roundIndex];
-    CARD card2 = player2->hand[roundIndex];
+    CARD card1 = player1->hand[0];
+    CARD card2 = player2->hand[0];
 
     //displays what each player plays
     printf ( "\nYou play: %s of %s\n", card1.card, card1.suit );
@@ -52,16 +49,18 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player1->hand[ player1->handSize ] = card1; //player 1 gets their card back
         player1->hand[ player1->handSize + 1 ] = card2; //player 1 gets the other players card
-        player1->handSize += 1; //increase player 1's hand size
+        player1->handSize += 2; //increase player 1's hand size
 
-        for (int i = roundIndex; i < player1->handSize - 2; i++) {
-            player1->hand[i] = player1->hand[i + 2];  // Shift player 1's cards
+        for (int i = 0; i < player1->handSize - 1; i++) {
+            player1->hand[i] = player1->hand[i + 1];  // Shift player 1's cards
         }
-        for (int i = roundIndex; i < player2->handSize - 1; i++) {
+        for (int i = 0; i < player2->handSize - 1; i++) {
             player2->hand[i] = player2->hand[i + 1];  // Shift player 2's cards
         }
 
-        player2->handSize--; //player 2 loses a card
+        //decrease hand for both players
+        player1->handSize--;
+        player2->handSize--; 
 
     } else if ( result < 0 ) {
 
@@ -71,19 +70,35 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player2->hand[ player2->handSize ] = card2; //player 2 gets their card back
         player2->hand[ player2->handSize + 1 ] = card1; //player 2 gets the other players card
-        player2->handSize += 1;
+        player2->handSize += 2;
 
-        for (int i = roundIndex; i < player1->handSize - 1; i++) {
+        for (int i = 0; i < player1->handSize - 1; i++) {
             player1->hand[i] = player1->hand[i + 1];  // Shift player 1's cards
         }
-        for (int i = roundIndex; i < player2->handSize - 2; i++) {
-            player2->hand[i] = player2->hand[i + 2];  // Shift player 2's cards
+        for (int i = 0; i < player2->handSize - 1; i++) {
+            player2->hand[i] = player2->hand[i + 1];  // Shift player 2's cards
         }
 
-        player1->handSize--; //player 1 loses a card
+        //decrease hand for both players
+        player1->handSize--;
+        player2->handSize--;
 
     } else {
         printf ( "It's a Tie!\n" );//declares winner
+
+        // Move the top card of player 1 to the back of their hand
+        CARD tempCard1 = card1;  // Store top card temporarily
+        for (int i = 0; i < player1->handSize - 1; i++) {
+            player1->hand[i] = player1->hand[i + 1];  // Shift player 1's cards
+        }
+        player1->hand[player1->handSize - 1] = tempCard1;  // Place the top card at the end of the hand
+
+        // Move the top card of player 2 to the back of their hand
+        CARD tempCard2 = card2;  // Store top card temporarily
+        for (int i = 0; i < player2->handSize - 1; i++) {
+            player2->hand[i] = player2->hand[i + 1];  // Shift player 2's cards
+        }
+        player2->hand[player2->handSize - 1] = tempCard2;  // Place the top card at the end of the hand
     }
 
 
