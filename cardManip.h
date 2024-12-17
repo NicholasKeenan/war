@@ -14,6 +14,6 @@ typedef struct {
 
 CARD* readCardFile ( char* filename, int *cardArraySize );
 void printCard ( CARD *cardArray, int arraySize );
-
+int compareCards ( CARD *card1, CARD *card2 );
 
 #endif

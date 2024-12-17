@@ -63,3 +63,7 @@ void printCard ( CARD *cardArray, int arraySize ) { // Prints cards
     }
 
 }
+
+int compareCards ( CARD *card1, CARD *card2 ) { // compares cards
+    return card1->value - card2->value; //returns positive if card1>card2, negative if card2>card1, and 0 if equal
+}
