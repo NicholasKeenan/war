@@ -115,7 +115,7 @@ int main ( int argc, char *argv[] ) {
         if ( choice == 'n' || choice == 'N' ) {
             printf ( "\nThanks for playing!\n" );
             break; // exits the loop and ends the game
-        } else if ( choice != 'y' && choice != 'Y' ) {
+        } else if ( choice != 'y' && choice != 'Y' && choice != 'n' && choice != 'N' ) {
             // If the input is not 'y' or 'n', ask again
             while ( choice != 'y' && choice != 'Y' && choice != 'n' && choice != 'N' ) {
                 redText();
