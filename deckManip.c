@@ -1,6 +1,6 @@
 //DECKMANIP FILE
 //This file does all the manipulation of decks/hands
-//shuffles decks, shuffles hands, and plays each round
+//shuffles decks, deals hands, and plays each round
 
 #include <stdio.h>
 #include <stdlib.h>
