@@ -1,3 +1,7 @@
+//DECKMANIP FILE
+//This file does all the manipulation of decks/hands
+//shuffles decks, shuffles hands, and plays each round
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,28 +11,29 @@
 #include "stringManip.h"
 #include "deckManip.h"
 
-//fucntion to shuffle deck
+//fucntion to shuffle deck, a deck (array of cards) is sent to it
 void shuffleDeck ( CARD deck[] ) {
-    srand ( time ( NULL ) );
+    srand ( time ( NULL ) ); //creates seed
     for ( int i = 0; i < 52; i++ ) {
-        int j = rand() % 52;
+        int j = rand() % 52; //gets random number out of 52
         CARD temp = deck[i];
         deck[i] = deck [j];
         deck [j] = temp;
     }
 }
 
-//function to shuffle hand
+//function to shuffle hand, a hand pointer and the hand size is sent to it
 void shuffleHand ( CARD *hand, int handSize ) {
-    srand ( time ( NULL ) );
+    srand ( time ( NULL ) ); //creates seed
     for (int i = handSize - 1; i > 0; i--) {
-        int j = rand() % (i + 1);
+        int j = rand() % (i + 1); //gets random number out of 52
         CARD temp = hand[i];
         hand[i] = hand[j];
         hand[j] = temp;
     }
 }
 
+//function to deal cards, a deck (array of cards) and the pointers to both players is sent to it
 void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 ) {
     for ( int i = 0; i < 26; i++ ) {
         player1->hand[i] = deck[i]; //deals first player 26 cards
@@ -38,6 +43,8 @@ void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 ) {
     player2->handSize = 26; //creates hand size for player
 }
 
+
+//function to play each round, the pointers to both players and the roundCounter pointer are sent to it
 void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
     
     int player1Wins = 0;

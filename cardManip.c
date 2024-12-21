@@ -1,3 +1,7 @@
+//CARDMANIP FILE
+//deals with reading the card file, sending the data to be trimmed, storing the
+//data, printing each card, and comparing the values of the cards.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,7 +9,8 @@
 #include "cardManip.h"
 #include "stringManip.h"
 
-CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read room file
+// Function to read room, the name of the file, and the pointer for the size of the card array is passed in
+CARD* readCardFile ( char* filename, int *cardArraySize ) { 
 
     FILE *file = fopen ( filename, "r" ); // Opens file as read
 
@@ -52,6 +57,7 @@ CARD* readCardFile ( char* filename, int *cardArraySize ) { // Function to read 
 
 }
 
+//function to print the cards, the pointer for the card array and the size of the array are passed in
 void printCard ( CARD *cardArray, int arraySize ) { // Prints cards
 
     for ( int i = 0; i < arraySize; i++ ) {
@@ -60,6 +66,7 @@ void printCard ( CARD *cardArray, int arraySize ) { // Prints cards
 
 }
 
+//function to compare cards, the pointers to the first card in both players hands are passed in
 int compareCards ( CARD *card1, CARD *card2 ) { // compares cards
     return card1->value - card2->value; //returns positive if card1>card2, negative if card2>card1, and 0 if equal
 }

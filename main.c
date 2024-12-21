@@ -1,3 +1,6 @@
+//MAIN FUNCTION
+//PLAYS THE GAME
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -6,6 +9,8 @@
 #include "stringManip.h"
 #include "deckManip.h"
 
+//main function that runs the game loop
+//an argument counter and an array of arguments to be passed into the program are passed in
 int main ( int argc, char *argv[] ) {
 
     char choice; //stores user input for instructions vs starting
@@ -66,6 +71,7 @@ int main ( int argc, char *argv[] ) {
                     redText();
                     printf ( "\nInvalid Choice, Enter 'ENTER' or '1'.\n" ); //tells user that the choice is invalid
                     choice = getchar();
+                    resetText_Color();
                 }
 
             }
@@ -88,20 +94,20 @@ int main ( int argc, char *argv[] ) {
             
         }
 
-        if ( player1.handSize > 0 ) { //determines game winner
+        if ( player1.handSize > 0 ) { //determines if game winner is the player
             printf ( "You Win This Game!\n" );
         } else if ( player2.handSize > 0 ) {
-            printf ( "You Lose... Computer Win This Game!\n" );
+            printf ( "You Lose... Computer Win This Game!\n" ); //determines if the game winner is the player
         } else {
-            printf ( "error" );
+            printf ( "error" ); //prints an error if neither
         }
 
         printf ( "\nWould You Like to Play Again? (y/n):\n" ); //prompt to play again
         choice = getchar(); //stores input
         while ( getchar() != '\n' ) {} //clears input
 
-    } while ( choice == 'y' || choice == 'Y' );
+    } while ( choice == 'y' || choice == 'Y' ); //restarts program if the user wants to
 
     return 0;
 
-}  
+}
