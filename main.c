@@ -89,6 +89,10 @@ int main ( int argc, char *argv[] ) {
             
             playRound ( &player1, &player2, &roundCounter );//plays round
 
+            if ( getchar() == 's' ){
+                break;
+            }
+
             while ( getchar() != '\n' ) {//waits for new input
             }//loop will keep running until user presses enter
             
@@ -120,9 +124,10 @@ int main ( int argc, char *argv[] ) {
                 choice = getchar();
                 while (getchar() != '\n') {} // clears the input buffer
             }
+        }
 
     } while ( choice == 'y' || choice == 'Y' ); //restarts program if the user wants to
-
+    
     return 0;
-
+    
 }
