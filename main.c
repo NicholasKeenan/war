@@ -81,7 +81,7 @@ int main ( int argc, char *argv[] ) {
         shuffleDeck ( cardArray ); //shuffles deck
         dealCards ( cardArray, &player1, &player2 ); //deals each player their cards
 
-        while ( player1.handSize > 0 && player2.handSize > 0 ) { //plays rounds until one player has 0 cards left
+        while ( player1.handSize > 1 && player2.handSize > 1 ) { //plays rounds until one player has 1 card left
 
             greenText(); //sets text to green
             printf ( "-----------------------------------------------------\n" ); //separates rounds
@@ -98,9 +98,9 @@ int main ( int argc, char *argv[] ) {
             
         }
 
-        if ( player1.handSize > 0 ) { //determines if game winner is the player
+        if ( player1.handSize > 1 ) { //determines if game winner is the player
             printf ( "You Win This Game!\n" );
-        } else if ( player2.handSize > 0 ) {
+        } else if ( player2.handSize > 1 ) {
             printf ( "You Lose... Computer Win This Game!\n" ); //determines if the game winner is the player
         } else {
             printf ( "error" ); //prints an error if neither
