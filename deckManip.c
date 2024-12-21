@@ -22,17 +22,6 @@ void shuffleDeck ( CARD deck[] ) {
     }
 }
 
-//function to shuffle hand, a hand pointer and the hand size is sent to it
-void shuffleHand ( CARD *hand, int handSize ) {
-    srand ( time ( NULL ) ); //creates seed
-    for (int i = handSize - 1; i > 0; i--) {
-        int j = rand() % (i + 1); //gets random number out of 52
-        CARD temp = hand[i];
-        hand[i] = hand[j];
-        hand[j] = temp;
-    }
-}
-
 //function to deal cards, a deck (array of cards) and the pointers to both players is sent to it
 void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 ) {
     for ( int i = 0; i < 26; i++ ) {
@@ -120,14 +109,6 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
         }
         player2->hand[player2->handSize - 1] = tempCard2;  // Place the top card at the end of the hand
     }
-
-    //shuffles hands every 20 rounds to prevent deadlock
-    if ( *roundCounter % 20 == 0 ) {
-        printf("\nShuffling hands...\n");
-        shuffleHand ( player1->hand, player1->handSize );
-        shuffleHand ( player2->hand, player2->handSize );
-    }
-
 
     printf ( "\nYou Have %d Cards Left.\n", player1->handSize );
     printf ( "\nThe Computer Has %d Cards Left.\n", player2->handSize );
