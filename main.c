@@ -102,9 +102,24 @@ int main ( int argc, char *argv[] ) {
             printf ( "error" ); //prints an error if neither
         }
 
+        free ( cardArray );
+
         printf ( "\nWould You Like to Play Again? (y/n):\n" ); //prompt to play again
         choice = getchar(); //stores input
         while ( getchar() != '\n' ) {} //clears input
+
+        if ( choice == 'n' || choice == 'N' ) {
+            printf ( "\nThanks for playing!\n" );
+            break; // exits the loop and ends the game
+        } else if ( choice != 'y' && choice != 'Y' ) {
+            // If the input is not 'y' or 'n', ask again
+            while ( choice != 'y' && choice != 'Y' && choice != 'n' && choice != 'N' ) {
+                redText();
+                printf ( "\nInvalid input. Please enter 'y' to play again or 'n' to exit: \n" );
+                resetText_Color();
+                choice = getchar();
+                while (getchar() != '\n') {} // clears the input buffer
+            }
 
     } while ( choice == 'y' || choice == 'Y' ); //restarts program if the user wants to
 
