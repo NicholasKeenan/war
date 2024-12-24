@@ -24,6 +24,10 @@ void shuffleDeck ( CARD deck[] ) {
 
 //function to deal cards, a deck (array of cards) and the pointers to both players is sent to it
 void dealCards ( CARD deck[], PLAYER *player1, PLAYER *player2 ) {
+
+    player1->hand = ( CARD * ) malloc( 26 * sizeof ( CARD ) );
+    player2->hand = ( CARD *) malloc ( 26 * sizeof ( CARD ) );
+
     for ( int i = 0; i < 26; i++ ) {
         player1->hand[i] = deck[i]; //deals first player 26 cards
         player2->hand[i] = deck[i+26]; //deals second player the rest of cards
@@ -56,9 +60,11 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player1Wins++; //adds to the win counter of player 1
 
-        player1->hand[ player1->handSize ] = card1; //player 1 gets their card back
-        player1->hand[ player1->handSize + 1 ] = card2; //player 1 gets the other players card
-        player1->handSize += 2; //increase player 1's hand size
+        player1->handSize += 2;
+        player1->hand = realloc ( player1->hand, player1->handSize * sizeof ( CARD ) );
+
+        player1->hand[player1->handSize - 2] = card1;
+        player1->hand[player1->handSize - 1] = card2;
 
         for (int i = 0; i < player1->handSize - 1; i++) {
             player1->hand[i] = player1->hand[i + 1];  // Shift player 1's cards
@@ -77,9 +83,11 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
         player2Wins++; //adds to the win counter of player 2
 
-        player2->hand[ player2->handSize ] = card2; //player 2 gets their card back
-        player2->hand[ player2->handSize + 1 ] = card1; //player 2 gets the other players card
         player2->handSize += 2;
+        player2->hand = realloc ( player2->hand, player2->handSize * sizeof ( CARD ) );
+
+        player2->hand[player2->handSize - 2] = card2;
+        player2->hand[player2->handSize - 1] = card1;
 
         for (int i = 0; i < player1->handSize - 1; i++) {
             player1->hand[i] = player1->hand[i + 1];  // Shift player 1's cards
@@ -115,4 +123,12 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
     ( *roundCounter )++;
 
+}
+
+void freeMemory ( PLAYER *player1, PLAYER *player2, CARD *cardArray ) {
+    free ( player1->hand ); //frees player 1's hand
+
+    free ( player2->hand ); //frees player 2's hand
+
+    free ( cardArray ); //frees card array
 }
