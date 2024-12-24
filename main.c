@@ -119,7 +119,6 @@ int main ( int argc, char *argv[] ) {
                 printf ( "\nInvalid input. Please enter 'y' to play again or 'n' to exit: \n" );
                 resetText_Color();
                 choice = getchar();
-                while (getchar() != '\n') {} // clears the input buffer
             }
         }
         freeMemory ( &player1, &player2, cardArray );
