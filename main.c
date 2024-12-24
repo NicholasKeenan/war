@@ -12,19 +12,18 @@
 //main function that runs the game loop
 //an argument counter and an array of arguments to be passed into the program are passed in
 int main ( int argc, char *argv[] ) {
-
     char choice; //stores user input for instructions vs starting
-    int cardArraySize = 52; // Card array variable
-    int roundCounter = 0; //round counter variable
-
-    PLAYER player1, player2; //creates players
-
-    CARD *cardArray = readCardFile ( argv[1], &cardArraySize ); //brings file into main
-    if ( cardArray == NULL ) return 0; //deals with errors reading file
-
-
     //STARTUP PROCEDURE
     do {
+
+        int cardArraySize = 52; // Card array variable
+        int roundCounter = 0; //round counter variable
+
+        PLAYER player1, player2; //creates players
+
+        CARD *cardArray = readCardFile ( argv[1], &cardArraySize ); //brings file into main
+    if ( cardArray == NULL ) return 0; //deals with errors reading file
+        
         resetText_Color();
 
         while ( choice != '\n' && choice != '1' ) {
@@ -106,8 +105,6 @@ int main ( int argc, char *argv[] ) {
             printf ( "error" ); //prints an error if neither
         }
 
-        free ( cardArray );
-
         printf ( "\nWould You Like to Play Again? (y/n):\n" ); //prompt to play again
         choice = getchar(); //stores input
         while ( getchar() != '\n' ) {} //clears input
@@ -125,6 +122,7 @@ int main ( int argc, char *argv[] ) {
                 while (getchar() != '\n') {} // clears the input buffer
             }
         }
+        freeMemory ( &player1, &player2, cardArray );
 
     } while ( choice == 'y' || choice == 'Y' ); //restarts program if the user wants to
     
