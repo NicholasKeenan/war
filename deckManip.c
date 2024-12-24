@@ -125,6 +125,7 @@ void playRound ( PLAYER *player1, PLAYER *player2, int *roundCounter ) {
 
 }
 
+//function to free all the memory, both players and the card array are passed in to be freed
 void freeMemory ( PLAYER *player1, PLAYER *player2, CARD *cardArray ) {
     free ( player1->hand ); //frees player 1's hand
 
